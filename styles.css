@@ -38,11 +38,19 @@ header {
     margin: 20px 20%;
 
 }
-input {
+#nextJoke {
     background-color: #3ED3DE;
     color: #fff;
     border-radius: 10px;
     border-color: #3ED3DE;
     padding: 10px 20px;
     margin: 10px;
+}
+
+.display{
+    display :block;
+}
+
+.no-display {
+    display: none;
 }
