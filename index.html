@@ -8,12 +8,12 @@
 </head>
 <body>
 <div class="container">
-    <header> Avui: parcialment enuvulat</header>
+    <header id="weather"> Avui: parcialment enuvulat</header>
 
     <div id="main-panel">
         <h1>Preparat per riure?</h1>
         <p id="joke"></p>
-        <div>
+        <div id="votingButtons">
             <input type="button" id="vote1"  class="no-display" value="1" onclick="jokeScore(1)">
             <input type="button"  id="vote2"  class="no-display" value="2" onclick="jokeScore(2)">
             <input type="button"  id="vote3"  class="no-display" value="3" onclick="jokeScore(3)">
@@ -21,7 +21,8 @@
         <input type="button" id="nextJoke" value="Següent Acudit" onclick="nextJoke()">
     </div>
 
-    <script src="index.js"></script>
+    <script>var exports = {};  </script>
+    <script src="typeScript/index.js"></script>
 
 </body>
 </html>

@@ -38,6 +38,13 @@ header {
     margin: 20px 20%;
 
 }
+
+#votingButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+
 #nextJoke {
     background-color: #3ED3DE;
     color: #fff;

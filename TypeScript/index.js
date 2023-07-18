@@ -1,11 +1,11 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Vote_1 = require("./Vote");
 //Ex1
-const API_URL = `https://icanhazdadjoke.com/`;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Vote = void 0;
+const DAD_JOKE_API = `https://icanhazdadjoke.com/`;
 const JOKE_ELEMENT = document.querySelector(`#joke`);
 function nextJoke() {
-    fetch(`${API_URL}`, {
+    fetch(`${DAD_JOKE_API}`, {
         headers: {
             Accept: "application/json" // to get the infmation in json format
         }
@@ -13,18 +13,39 @@ function nextJoke() {
         .then((response => response.json())) // pick up promise && parse it - retuns parsed pormise in JSON
         .then((jokeObject => {
         console.log(jokeObject.joke); // to acess the "joke field of the jokeObject in the array (from response)
+        JOKE_ELEMENT.innerHTML = `${jokeObject.joke}`;
     }));
 }
 //Ex2
 const reportAcudits = [];
-// let date.toISOString()=
-function jokeScore(scoreNumber) {
-    let joke = document.querySelector("#joke");
+class Vote {
+    constructor(joke, score, date) {
+        this.joke = joke,
+            this.score = score,
+            this.date = date;
+    }
+    get _joke() {
+        return this.joke;
+    }
+    set _score(newSc) {
+        this.score = newSc;
+    }
+}
+exports.Vote = Vote;
+function jokeScore(score) {
+    let jokeP = document.querySelector("#joke");
+    let joke = jokeP.innerHTML;
     let nowDate = new Date;
     let date = nowDate.toISOString();
-    let score = parseInt("scoreNumber");
-    let vote = new Vote_1.Vote(joke, score, date);
-    reportAcudits.push(vote);
+    let indexJoke = reportAcudits.map(acudit => acudit.joke).indexOf(joke);
+    if (indexJoke === -1) {
+        let vote = new Vote(joke, score, date);
+        reportAcudits.push(vote);
+    }
+    else {
+        reportAcudits[indexJoke].score = score;
+    }
+    console.log(reportAcudits);
 }
 //voting button display
 let nextJokeButton = document.querySelector("#nextJoke");
@@ -38,3 +59,18 @@ function display() {
     vote3.className = "display";
     console.log('Button clicked!');
 }
+//Ex 3
+//Weather
+const WEATHER_ELEMENT = document.querySelector(`header`);
+const WEATHER_API_URL = `https://www.el-tiempo.net/api/json/v2/provincias/08/municipios/08019`;
+fetch(`${WEATHER_API_URL}`, {
+    headers: {
+        Accept: "application/json" // to get the infmation in json format
+    }
+}) //returns a promise
+    .then((response => response.json())) // pick up promise && parse it - retuns parsed pormise in JSON
+    .then((weatherObject => {
+    console.log(weatherObject.stateSky.description); // to acess the "joke field of the jokeObject in the array (from response)
+    WEATHER_ELEMENT.innerHTML =
+        `Avui a ${weatherObject.municipio.NOMBRE}: ${weatherObject.temperatura_actual}ºC - ${weatherObject.stateSky.description} `;
+}));
