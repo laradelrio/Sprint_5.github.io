@@ -1,22 +1,73 @@
 "use strict";
-//Ex1
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Vote = void 0;
-const DAD_JOKE_API = `https://icanhazdadjoke.com/`;
+//API CALLS
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+//JOKE APIS
 const JOKE_ELEMENT = document.querySelector(`#joke`);
+let counter = 0;
 function nextJoke() {
-    fetch(`${DAD_JOKE_API}`, {
-        headers: {
-            Accept: "application/json" // to get the infmation in json format
+    return __awaiter(this, void 0, void 0, function* () {
+        counter++;
+        const DAD_JOKE_API = `https://icanhazdadjoke.com/`;
+        const CHUCK_NORRIS_API = `https://api.chucknorris.io/jokes/random`;
+        if (counter % 2 === 0) {
+            try {
+                let response = yield fetch(`${DAD_JOKE_API}`, {
+                    headers: {
+                        Accept: "application/json" // to get the infmation in json format
+                    }
+                }); // wait for API response
+                let jokeObject = yield response.json(); // wait for parsed response
+                console.log(jokeObject.joke);
+                JOKE_ELEMENT.innerHTML = `${jokeObject.joke}`;
+            }
+            catch (error) {
+                console.error(`ERROR ${error}`);
+            }
         }
-    }) //returns a promise
-        .then((response => response.json())) // pick up promise && parse it - retuns parsed pormise in JSON
-        .then((jokeObject => {
-        console.log(jokeObject.joke); // to acess the "joke field of the jokeObject in the array (from response)
-        JOKE_ELEMENT.innerHTML = `${jokeObject.joke}`;
-    }));
+        else {
+            try {
+                let response = yield fetch(`${CHUCK_NORRIS_API}`, {
+                    headers: {
+                        Accept: "application/json" // to get the infmation in json format
+                    }
+                });
+                let jokeObject = yield response.json(); // wait for parsed response
+                console.log(jokeObject.value);
+                JOKE_ELEMENT.innerHTML = `${jokeObject.value}`;
+            }
+            catch (error) {
+                console.error(`ERROR ${error}`);
+            }
+        }
+    });
 }
-//Ex2
+//Weather API
+const WEATHER_ELEMENT = document.querySelector(`header`);
+const WEATHER_API_URL = `https://www.el-tiempo.net/api/json/v2/provincias/08/municipios/08019`;
+weather();
+function weather() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            let response = yield fetch(`${WEATHER_API_URL}`); //wait for response from API
+            const weatherObject = yield response.json();
+            WEATHER_ELEMENT.innerHTML =
+                `Avui a ${weatherObject.municipio.NOMBRE}: ${weatherObject.temperatura_actual}ºC - ${weatherObject.stateSky.description} `;
+            console.log(`${weatherObject.municipio.NOMBRE}: ${weatherObject.temperatura_actual}ºC - ${weatherObject.stateSky.description} `);
+        }
+        catch (error) {
+            console.error(`ERROR ${error}`);
+        }
+    });
+}
+//JOKE VOTES
 const reportAcudits = [];
 class Vote {
     constructor(joke, score, date) {
@@ -31,7 +82,7 @@ class Vote {
         this.score = newSc;
     }
 }
-exports.Vote = Vote;
+//create or update joke object in array
 function jokeScore(score) {
     let jokeP = document.querySelector("#joke");
     let joke = jokeP.innerHTML;
@@ -60,17 +111,3 @@ function display() {
     console.log('Button clicked!');
 }
 //Ex 3
-//Weather
-const WEATHER_ELEMENT = document.querySelector(`header`);
-const WEATHER_API_URL = `https://www.el-tiempo.net/api/json/v2/provincias/08/municipios/08019`;
-fetch(`${WEATHER_API_URL}`, {
-    headers: {
-        Accept: "application/json" // to get the infmation in json format
-    }
-}) //returns a promise
-    .then((response => response.json())) // pick up promise && parse it - retuns parsed pormise in JSON
-    .then((weatherObject => {
-    console.log(weatherObject.stateSky.description); // to acess the "joke field of the jokeObject in the array (from response)
-    WEATHER_ELEMENT.innerHTML =
-        `Avui a ${weatherObject.municipio.NOMBRE}: ${weatherObject.temperatura_actual}ºC - ${weatherObject.stateSky.description} `;
-}));
