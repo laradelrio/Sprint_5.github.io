@@ -13,9 +13,27 @@ body{
 header {
     margin-left: 5%; 
     margin-bottom: 10px;;
-    height: 4rem;
+    margin-top: 20px;;
+    height: 3rem;
     display: flex;
     align-items: center;
+    font-size: large;
+}
+
+#weatherIcon {
+    padding-left:20px;
+    border-style:solid;
+    border-color: black; 
+    border-width: 0 2px 0 0;
+    margin: 10px;
+}
+#blobContainer{
+    background-image: url(blobImages/blobPurple.svg); 
+    background-repeat: no-repeat;
+    background-size: 90vh;
+    background-position: center;
+    height: 80vh;
+    display: grid;
 }
 
 #main-panel{
@@ -27,23 +45,39 @@ header {
     align-items: center;
     width: 55%;
     height:40%;
-    padding: 5%;
-    margin: 10% 15%;
-    border-radius: 25px;
-    box-shadow: 4px 6px 20px 0px rgb(0,0,0, 0.19) 
+    padding: 5%;   
+}
+
+h1{
+    text-align: center;
+    
 }
 
 #joke{
     font-size: larger;
-    margin: 20px 20%;
+    margin: 20px 20% 40px 20%;
+    text-align: center;
+
 
 }
 
 #votingButtons{
     display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: space-around;
 }
 
+.voteIcon{
+    margin: 20px;
+    background: none;
+    border: none;
+    font-size: x-large;
+    color: rgb(96, 91, 91);
+}
+.voteIcon:hover{
+    color: black;
+}
 
 #nextJoke {
     background-color: #3ED3DE;
@@ -51,7 +85,7 @@ header {
     border-radius: 10px;
     border-color: #3ED3DE;
     padding: 10px 20px;
-    margin: 10px;
+    margin: -20px;
 }
 
 .display{
@@ -61,3 +95,33 @@ header {
 .no-display {
     display: none;
 }
+
+@media screen and (max-width : 1024px) {
+    
+    #main-panel{
+       font-size: medium;
+    }
+  }
+@media screen and (max-width : 480px) {
+    
+    #main-panel{
+        height: fit-content;
+        font-size: smaller;   
+    }
+
+    #joke{
+        font-size: larger;
+        margin: 20px -50px 20px;
+    }
+
+    #votingButtons{
+        display: flex;
+        flex-direction: row;
+    }
+    #blobContainer {
+        margin-top:-80px;
+        background-size: 100vh 560vh;
+        height: 100vh;
+       
+    }
+  }

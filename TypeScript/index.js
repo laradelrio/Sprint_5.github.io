@@ -50,20 +50,29 @@ function nextJoke() {
     });
 }
 //Weather API
-const WEATHER_ELEMENT = document.querySelector(`header`);
-const WEATHER_API_URL = `https://www.el-tiempo.net/api/json/v2/provincias/08/municipios/08019`;
 weather();
 function weather() {
     return __awaiter(this, void 0, void 0, function* () {
+        const WEATHER_ELEMENT = document.querySelector(`header`);
+        const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=195.235.110.69';
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '7f77d58ba1mshcead7005ecf6564p12fe8fjsnbf38bd45f442',
+                'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+            }
+        };
         try {
-            let response = yield fetch(`${WEATHER_API_URL}`); //wait for response from API
-            const weatherObject = yield response.json();
+            const response = yield fetch(url, options);
+            const result = yield response.json();
+            console.log(result);
             WEATHER_ELEMENT.innerHTML =
-                `Avui a ${weatherObject.municipio.NOMBRE}: ${weatherObject.temperatura_actual}ºC - ${weatherObject.stateSky.description} `;
-            console.log(`${weatherObject.municipio.NOMBRE}: ${weatherObject.temperatura_actual}ºC - ${weatherObject.stateSky.description} `);
+                `<img id="weatherIcon" src="${result.current.condition.icon}" alt="${result.current.condition.text}">`
+                    +
+                        `Avui a ${result.location.name}: ${result.current.temp_c}ºC  `;
         }
         catch (error) {
-            console.error(`ERROR ${error}`);
+            console.error(error);
         }
     });
 }
@@ -103,11 +112,38 @@ let nextJokeButton = document.querySelector("#nextJoke");
 nextJokeButton.addEventListener("click", display, { once: true });
 function display() {
     let vote1 = document.getElementById("vote1");
-    vote1.className = "display";
+    vote1.className = "display voteIcon";
     let vote2 = document.getElementById("vote2");
-    vote2.className = "display";
+    vote2.className = "display voteIcon";
     let vote3 = document.getElementById("vote3");
-    vote3.className = "display";
+    vote3.className = "display voteIcon";
     console.log('Button clicked!');
 }
-//Ex 3
+//background Image Change
+nextJokeButton.addEventListener("click", backgroundImage);
+function backgroundImage() {
+    let blobContainer = document.getElementById("blobContainer");
+    let source = "";
+    let num = Math.floor(Math.random() * 6) + 1;
+    switch (num) {
+        case 1:
+            source = "blobImages/blobBlue.svg";
+            break;
+        case 2:
+            source = "blobImages/blobGreen.svg";
+            break;
+        case 3:
+            source = "blobImages/blobLightBlue.svg";
+            break;
+        case 4:
+            source = "blobImages/blobPink.svg";
+            break;
+        case 5:
+            source = "blobImages/blobPurple.svg";
+            break;
+        case 6:
+            source = "blobImages/blobTurquoise.svg";
+            break;
+    }
+    blobContainer.style.backgroundImage = `url("${source}")`;
+}

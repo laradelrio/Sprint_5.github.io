@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Sprint 5</title>
 </head>
 <body>
 <div class="container">
-    <header id="weather"> Avui: parcialment enuvulat</header>
-
+    <header id="weather"> </header>
+    <div id="blobContainer">
+        
     <div id="main-panel">
         <h1>Preparat per riure?</h1>
         <p id="joke"></p>
         <div id="votingButtons">
-            <input type="button" id="vote1"  class="no-display" value="1" onclick="jokeScore(1)">
-            <input type="button"  id="vote2"  class="no-display" value="2" onclick="jokeScore(2)">
-            <input type="button"  id="vote3"  class="no-display" value="3" onclick="jokeScore(3)">
+            <button id="vote1" class="no-display" onclick="jokeScore(1)">
+                <i class="fa-regular fa-face-laugh-beam"></i>
+            </button>
+            <button id="vote2" class="no-display" onclick="jokeScore(2)">
+                <i class="fa-regular fa-face-meh"></i>
+            </button>
+            <button id="vote3" class="no-display" onclick="jokeScore(3)">
+                <i class="fa-regular fa-face-frown"></i>
+            </button>
         </div>
         <input type="button" id="nextJoke" value="Següent Acudit" onclick="nextJoke()">
+    </div>
     </div>
 
     <script>var exports = {};  </script>
