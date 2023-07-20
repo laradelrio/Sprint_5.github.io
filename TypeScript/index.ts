@@ -20,7 +20,6 @@ async function nextJoke() {
             }) // wait for API response
 
             let jokeObject = await response.json() // wait for parsed response
-            console.log(jokeObject.joke);
             JOKE_ELEMENT.innerHTML = `${jokeObject.joke}`;
         } catch (error) {
             console.error(`ERROR ${error}`)
@@ -34,45 +33,37 @@ async function nextJoke() {
             })
 
             let jokeObject = await response.json() // wait for parsed response
-            console.log(jokeObject.value)
-            JOKE_ELEMENT.innerHTML = `${jokeObject.value}`
+            JOKE_ELEMENT.innerHTML = `${jokeObject.value}`;
         } catch (error) {
             console.error(`ERROR ${error}`)
         }
     }
 }
 
-
-    
-        
-            
-   
 //Weather API
 weather()
 async function weather() {
-const WEATHER_ELEMENT = document.querySelector(`header`) as HTMLElement;
-const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=195.235.110.69';
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '7f77d58ba1mshcead7005ecf6564p12fe8fjsnbf38bd45f442',
-		'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-	}
-};
+    const WEATHER_ELEMENT = document.querySelector(`header`) as HTMLElement;
+    const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=195.235.110.69';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '7f77d58ba1mshcead7005ecf6564p12fe8fjsnbf38bd45f442',
+            'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+        }
+    };
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.json();
-	console.log(result);
-    
-    WEATHER_ELEMENT.innerHTML =
-    `<img id="weatherIcon" src="${result.current.condition.icon}" alt="${result.current.condition.text}">`
-    +
-    `Avui a ${result.location.name}: ${result.current.temp_c}ºC  `;
-    
-} catch (error) {
-	console.error(error);
-}
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        WEATHER_ELEMENT.innerHTML =
+            `<img id="weatherIcon" src="${result.current.condition.icon}" alt="${result.current.condition.text}">`
+            +
+            `Avui a ${result.location.name}: ${result.current.temp_c}ºC  `;
+
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 
@@ -124,7 +115,6 @@ function jokeScore(score: number) {
 let nextJokeButton = document.querySelector("#nextJoke") as HTMLElement;
 nextJokeButton.addEventListener("click", display, { once: true });
 
-
 function display() {
     let vote1 = document.getElementById("vote1") as HTMLElement;
     vote1.className = "display voteIcon";
@@ -132,37 +122,34 @@ function display() {
     vote2.className = "display voteIcon";
     let vote3 = document.getElementById("vote3") as HTMLElement;
     vote3.className = "display voteIcon";
-    console.log('Button clicked!');
 }
-
-
 
 //background Image Change
 nextJokeButton.addEventListener("click", backgroundImage);
 
-function backgroundImage(){
+function backgroundImage() {
     let blobContainer = document.getElementById("blobContainer") as HTMLElement;
 
-    let source ="";
-    let num = Math.floor(Math.random() * 6)+1;
-    switch (num){
-            case 1:
-                source= "blobImages/blobBlue.svg";
+    let source = "";
+    let num = Math.floor(Math.random() * 6) + 1;
+    switch (num) {
+        case 1:
+            source = "blobImages/blobBlue.svg";
             break;
-            case 2:
-                source= "blobImages/blobGreen.svg";
+        case 2:
+            source = "blobImages/blobGreen.svg";
             break;
-            case 3:
-                source= "blobImages/blobLightBlue.svg";
+        case 3:
+            source = "blobImages/blobLightBlue.svg";
             break;
-            case 4:
-                source= "blobImages/blobPink.svg";
+        case 4:
+            source = "blobImages/blobPink.svg";
             break;
-            case 5:
-                source= "blobImages/blobPurple.svg";
+        case 5:
+            source = "blobImages/blobPurple.svg";
             break;
-            case 6:
-                source = "blobImages/blobTurquoise.svg";
+        case 6:
+            source = "blobImages/blobTurquoise.svg";
             break;
     }
 

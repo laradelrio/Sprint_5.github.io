@@ -25,7 +25,6 @@ function nextJoke() {
                     }
                 }); // wait for API response
                 let jokeObject = yield response.json(); // wait for parsed response
-                console.log(jokeObject.joke);
                 JOKE_ELEMENT.innerHTML = `${jokeObject.joke}`;
             }
             catch (error) {
@@ -40,7 +39,6 @@ function nextJoke() {
                     }
                 });
                 let jokeObject = yield response.json(); // wait for parsed response
-                console.log(jokeObject.value);
                 JOKE_ELEMENT.innerHTML = `${jokeObject.value}`;
             }
             catch (error) {
@@ -65,7 +63,6 @@ function weather() {
         try {
             const response = yield fetch(url, options);
             const result = yield response.json();
-            console.log(result);
             WEATHER_ELEMENT.innerHTML =
                 `<img id="weatherIcon" src="${result.current.condition.icon}" alt="${result.current.condition.text}">`
                     +
@@ -117,7 +114,6 @@ function display() {
     vote2.className = "display voteIcon";
     let vote3 = document.getElementById("vote3");
     vote3.className = "display voteIcon";
-    console.log('Button clicked!');
 }
 //background Image Change
 nextJokeButton.addEventListener("click", backgroundImage);

@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css"></link>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    </link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <title>Sprint 5</title>
 </head>
-<body>
-<div class="container">
-    <header id="weather"> </header>
-    <div id="blobContainer">
-        
-    <div id="main-panel">
-        <h1>Preparat per riure?</h1>
-        <p id="joke"></p>
-        <div id="votingButtons">
-            <button id="vote1" class="no-display" onclick="jokeScore(1)">
-                <i class="fa-regular fa-face-laugh-beam"></i>
-            </button>
-            <button id="vote2" class="no-display" onclick="jokeScore(2)">
-                <i class="fa-regular fa-face-meh"></i>
-            </button>
-            <button id="vote3" class="no-display" onclick="jokeScore(3)">
-                <i class="fa-regular fa-face-frown"></i>
-            </button>
-        </div>
-        <input type="button" id="nextJoke" value="Següent Acudit" onclick="nextJoke()">
-    </div>
-    </div>
 
-    <script>var exports = {};  </script>
-    <script src="typeScript/index.js"></script>
+<body>
+    <div class="container">
+        <header id="weather"> </header>
+        <div id="blobContainer">
+
+            <div id="main-panel">
+                <h1>Preparat per riure?</h1>
+                <p id="joke"></p>
+                <div id="votingButtons">
+                    <button id="vote1" class="no-display" onclick="jokeScore(1)">
+                        <i class="fa-regular fa-face-laugh-beam"></i>
+                    </button>
+                    <button id="vote2" class="no-display" onclick="jokeScore(2)">
+                        <i class="fa-regular fa-face-meh"></i>
+                    </button>
+                    <button id="vote3" class="no-display" onclick="jokeScore(3)">
+                        <i class="fa-regular fa-face-frown"></i>
+                    </button>
+                </div>
+                <input type="button" id="nextJoke" value="Següent Acudit" onclick="nextJoke()">
+            </div>
+        </div>
+
+        <script>var exports = {};  </script>
+        <script src="typeScript/index.js"></script>
 
 </body>
+
 </html>

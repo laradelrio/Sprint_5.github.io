@@ -1,19 +1,17 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    
+body {
+    font-family: 'Montserrat', sans-serif;
+    ;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
-    
-   
 }
 
 header {
-    margin-left: 5%; 
-    margin-bottom: 10px;;
-    margin-top: 20px;;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    margin-top: 20px;
     height: 3rem;
     display: flex;
     align-items: center;
@@ -21,14 +19,15 @@ header {
 }
 
 #weatherIcon {
-    padding-left:20px;
-    border-style:solid;
-    border-color: black; 
+    padding-left: 20px;
+    border-style: solid;
+    border-color: black;
     border-width: 0 2px 0 0;
     margin: 10px;
 }
-#blobContainer{
-    background-image: url(blobImages/blobPurple.svg); 
+
+#blobContainer {
+    background-image: url(blobImages/blobPurple.svg);
     background-repeat: no-repeat;
     background-size: 90vh;
     background-position: center;
@@ -36,7 +35,7 @@ header {
     display: grid;
 }
 
-#main-panel{
+#main-panel {
     justify-self: center;
     align-self: center;
     display: flex;
@@ -44,38 +43,37 @@ header {
     justify-content: center;
     align-items: center;
     width: 55%;
-    height:40%;
-    padding: 5%;   
+    height: 40%;
+    padding: 5%;
 }
 
-h1{
+h1 {
     text-align: center;
-    
+
 }
 
-#joke{
+#joke {
     font-size: larger;
     margin: 20px 20% 40px 20%;
     text-align: center;
-
-
 }
 
-#votingButtons{
+#votingButtons {
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
     justify-content: space-around;
 }
 
-.voteIcon{
+.voteIcon {
     margin: 20px;
     background: none;
     border: none;
     font-size: x-large;
     color: rgb(96, 91, 91);
 }
-.voteIcon:hover{
+
+.voteIcon:hover {
     color: black;
 }
 
@@ -86,10 +84,11 @@ h1{
     border-color: #3ED3DE;
     padding: 10px 20px;
     margin: -20px;
+    font-size: large;
 }
 
-.display{
-    display :block;
+.display {
+    display: block;
 }
 
 .no-display {
@@ -97,31 +96,33 @@ h1{
 }
 
 @media screen and (max-width : 1024px) {
-    
-    #main-panel{
-       font-size: medium;
+
+    #main-panel {
+        font-size: medium;
     }
-  }
+}
+
 @media screen and (max-width : 480px) {
-    
-    #main-panel{
+
+    #main-panel {
         height: fit-content;
-        font-size: smaller;   
+        font-size: smaller;
     }
 
-    #joke{
+    #joke {
         font-size: larger;
         margin: 20px -50px 20px;
     }
 
-    #votingButtons{
+    #votingButtons {
         display: flex;
         flex-direction: row;
     }
+
     #blobContainer {
-        margin-top:-80px;
+        margin-top: -80px;
         background-size: 100vh 560vh;
         height: 100vh;
-       
+
     }
-  }
+}
